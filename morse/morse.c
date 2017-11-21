@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
     char buf[10000];
     while (1) {
-        if (fscanf(in,"%s ",&buf) == EOF)
+        if (fscanf(in,"%s ",buf) == EOF)
             return 0;
         if (strspn(buf,"-.") == strlen(buf))
             morse(buf);
@@ -29,9 +29,11 @@ int main(int argc, char **argv)
 
 
 // https://codegolf.stackexchange.com/a/18069
-char n,t,m[9],*c=" etianmsurwdkgohvf l pjbxcyzq  54 3   2& +    16=/   ( 7   8 90    $       ?_    \"  .    @   '  -        ;! )     ,    :";
+int n,t;
+char m[9],*c=" etianmsurwdkgohvf l pjbxcyzq  54 3   2& +    16=/   ( 7   8 90    $       ?_    \"  .    @   '  -        ;! )     ,    :";
 
 void morse(char *m)
 {
-    for(t=m[6]=n=0;m[n];n++)t+=t+1+(m[n]&1);putchar(c[t]);
+    for(t=m[6]=n=0;m[n];n++)t+=t+1+(m[n]&1);
+    putchar(c[t]);
 }
